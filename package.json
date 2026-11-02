@@ -7,8 +7,7 @@
   "scripts": {
     "migrate": "node scripts/migrate.js",
     "seed": "node scripts/seed.js",
-    "setup": "npm run migrate && npm run seed",
-    "dev": "vercel dev"
+    "setup": "npm run migrate && npm run seed"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4"
