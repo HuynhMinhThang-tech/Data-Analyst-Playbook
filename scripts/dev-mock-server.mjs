@@ -22,10 +22,15 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify({ error: 'not_configured', message: 'AI chưa cấu hình (mock).' }));
     return;
   }
+  if (req.url === '/favicon.svg') {
+    res.setHeader('Content-Type', 'image/svg+xml');
+    res.end(fs.readFileSync(path.join(__dirname, '../public/favicon.svg'), 'utf8'));
+    return;
+  }
   const filePath = path.join(__dirname, '../public/index.html');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.end(fs.readFileSync(filePath, 'utf8'));
 });
 
-const PORT = 4173;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 4174;
 server.listen(PORT, () => console.log(`Mock server on http://localhost:${PORT}`));
